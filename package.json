@@ -1,0 +1,25 @@
+{
+  "name": "stackoverflow-clone",
+  "version": "0.1.0-dev",
+  "description": "A web app similar to stack overflow that can be used for question and answers mainly for programming and software engineering related.",
+  "keywords": [],
+  "homepage": "https://github.com/puneetgopinath/stackoverflow-clone#readme",
+  "bugs": {
+    "url": "https://github.com/puneetgopinath/stackoverflow-clone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puneetgopinath/stackoverflow-clone.git"
+  },
+  "license": "MIT",
+  "author": "PuneetGopinath",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2"
+  },
+  "devDependencies": {}
+}
