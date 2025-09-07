@@ -15,11 +15,26 @@ const helmet = require("helmet");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const prod = process.env.PROD === "1";
+
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+if (prod) {
+    app.use(express.static(path.join(__dirname, "../client-dist")));
+
+    app.get(/.*/, (req, res) => {
+        res.sendFile(path.join(__dirname, "../client-dist/index.html"));
+    });
+} else {
+    app.get("/", (req, res) => {
+        res.send(`Stack Overflow Clone is running in ${prod ? "Production" : "Development"} mode`);
+    });
+}
+
+console.log(`Environment: ${prod ? "Production" : "Development"}`);
 app.listen(PORT, () => {
     console.log(`Stack Overflow Clone Server is running on port ${PORT}`);
 });
