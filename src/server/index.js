@@ -34,6 +34,10 @@ if (prod) {
     });
 }
 
+app.get("/health", (req, res) => {
+    res.status(200).json({ "status": "OK", "timestamp": new Date().toISOString() });
+});
+
 console.log(`Environment: ${prod ? "Production" : "Development"}`);
 app.listen(PORT, () => {
     console.log(`Stack Overflow Clone Server is running on port ${PORT}`);
