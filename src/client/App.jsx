@@ -4,6 +4,11 @@
  * Filename: src/client/App.jsx
  * License: MIT (see LICENSE)
 */
+
+import Home from "./components/Home"
+
 export default function App() {
-    return (<h1>App</h1>)
+    return (
+        <Home />
+    )
 }
