@@ -1,0 +1,14 @@
+/**
+ * Stack Overflow Clone
+ * © 2025 Puneet Gopinath. All rights reserved.
+ * Filename: src/client/index.css
+ * License: MIT (see LICENSE)
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f8f9f9;
+}
