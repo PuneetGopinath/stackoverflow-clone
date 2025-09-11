@@ -7,6 +7,11 @@
 
 export default function Home() {
     return (
-        <h1>Home Page</h1>
+        <>
+            <h1>Stack Overflow Clone</h1>
+            <p>A web app similar to stack overflow that can be used for question and answers mainly for programming and software engineering related.</p>
+
+            <p><bold>Website is in construction</bold></p>
+        </>
     );
 };
