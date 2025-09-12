@@ -23,6 +23,10 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/livez", (req, res) => {
+    res.status(200).json({ "status": "OK", "timestamp": new Date().toISOString() });
+});
+
 if (prod) {
     app.use(express.static(path.join(__dirname, "../client-dist")));
 
@@ -34,10 +38,6 @@ if (prod) {
         res.send(`Stack Overflow Clone is running in ${prod ? "Production" : "Development"} mode`);
     });
 }
-
-app.get("/livez", (req, res) => {
-    res.status(200).json({ "status": "OK", "timestamp": new Date().toISOString() });
-});
 
 console.log(`Environment: ${prod ? "Production" : "Development"}`);
 app.listen(PORT, () => {
