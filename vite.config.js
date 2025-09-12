@@ -12,6 +12,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": `http://localhost:${PORT}`, // Proxy API requests to the backend server
+            "/livez": `http://localhost:${PORT}` // Proxy health check requests to the backend server
         }
     },
     build: {
