@@ -35,7 +35,7 @@ if (prod) {
     });
 }
 
-app.get("/health", (req, res) => {
+app.get("/livez", (req, res) => {
     res.status(200).json({ "status": "OK", "timestamp": new Date().toISOString() });
 });
 
