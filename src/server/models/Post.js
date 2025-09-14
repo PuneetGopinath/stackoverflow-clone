@@ -1,3 +1,10 @@
+/**
+ * Stack Overflow Clone
+ * © 2025 Puneet Gopinath. All rights reserved.
+ * Filename: src/server/models/Post.js
+ * License: MIT (see LICENSE)
+*/
+
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({

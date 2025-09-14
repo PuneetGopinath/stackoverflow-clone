@@ -13,6 +13,10 @@ import path from "path";
 import cors from "cors";
 import helmet from "helmet";
 
+import connectDB from "./config/db.js";
+
+config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -39,7 +43,8 @@ if (prod) {
     });
 }
 
-console.log(`Environment: ${prod ? "Production" : "Development"}`);
+console.log(`[ INFO ] Environment: ${prod ? "Production" : "Development"}`);
+connectDB();
 app.listen(PORT, () => {
-    console.log(`Stack Overflow Clone Server is running on port ${PORT}`);
+    console.log(`[ INFO ] Stack Overflow Clone Server is running on port ${PORT}`);
 });
