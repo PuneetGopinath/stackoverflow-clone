@@ -5,13 +5,13 @@
  * License: MIT (see LICENSE)
 */
 
-require("dotenv").config();
+import { config } from "dotenv";
 
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "path";
 
-const cors = require("cors");
-const helmet = require("helmet");
+import cors from "cors";
+import helmet from "helmet";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
