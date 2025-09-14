@@ -7,7 +7,14 @@
 
 import mongoose from "mongoose";
 
+import { randomUUID } from "crypto";
+
 const postSchema = new mongoose.Schema({
+    urlID: {
+        type: mongoose.Schema.Types.UUID,
+        default: () => randomUUID(),
+        unique: true
+    },
     postType: {
         type: String,
         required: true,
