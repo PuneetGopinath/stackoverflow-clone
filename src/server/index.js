@@ -14,10 +14,11 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import helmet from "helmet";
 
-import { VERSION, QUESTION_API_URL } from "../shared/constants.js";
+import { VERSION, POST_API_URL, USER_API_URL } from "../shared/constants.js";
 import connectDB from "./config/db.js";
 
 import question from "./routes/question.js";
+import user from "./routes/user.js";
 
 config();
 
@@ -48,7 +49,8 @@ if (prod) {
     });
 }
 
-app.use(QUESTION_API_URL, question);
+app.use(POST_API_URL, question);
+app.use(USER_API_URL, user);
 
 app.use((err, req, res, next) => {
     console.error("[ ERROR ]", err);
