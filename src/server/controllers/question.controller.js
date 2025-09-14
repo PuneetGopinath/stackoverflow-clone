@@ -16,8 +16,8 @@ export const question = async (req, res) => {
             path: "author",
             select: "username name"
         }
-    }).toObject();
-    res.json(question);
+    });
+    res.json({ ...question._doc });
 };
 
 export const comment = async (req, res) => {
