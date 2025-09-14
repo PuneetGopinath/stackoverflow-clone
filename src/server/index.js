@@ -14,7 +14,10 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import helmet from "helmet";
 
+import { VERSION, QUESTION_API_URL } from "../shared/constants.js";
 import connectDB from "./config/db.js";
+
+import question from "./routes/question.js";
 
 config();
 
@@ -41,12 +44,22 @@ if (prod) {
     });
 } else {
     app.get("/", (req, res) => {
-        res.send(`Stack Overflow Clone is running in ${prod ? "Production" : "Development"} mode`);
+        res.send(`Stack Overflow Clone ${VERSION} is running in ${prod ? "Production" : "Development"} mode`);
     });
 }
+
+app.use(QUESTION_API_URL, question);
+
+app.use((err, req, res, next) => {
+    console.error("[ ERROR ]", err);
+    if (res.headersSent) {
+        return next(err);
+    }
+    res.status(500).json({ message: err.message || "Internal Server Error. Please contact support." });
+});
 
 console.log(`[ INFO ] Environment: ${prod ? "Production" : "Development"}`);
 connectDB();
 app.listen(PORT, () => {
-    console.log(`[ INFO ] Stack Overflow Clone Server is running on port ${PORT}`);
+    console.log(`[ INFO ] Stack Overflow Clone Server ${VERSION} is running on port ${PORT}`);
 });
