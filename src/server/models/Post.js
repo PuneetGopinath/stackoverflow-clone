@@ -32,7 +32,7 @@ const postSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: () => this.postType === "question",
+        required: function() { return this.postType === "question"; },
         default: null
     },
     content: {
