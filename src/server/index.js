@@ -9,6 +9,7 @@ import { config } from "dotenv";
 
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 
 import cors from "cors";
 import helmet from "helmet";
@@ -21,6 +22,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const prod = process.env.PROD === "1";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
 app.use(helmet());
