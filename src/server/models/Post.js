@@ -30,6 +30,11 @@ const postSchema = new mongoose.Schema({
         ref: "Post",
         default: []
     },
+    title: {
+        type: String,
+        required: () => this.postType === "question",
+        default: null
+    },
     content: {
         type: String,
         required: true
