@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 import Layout from "./components/Layout.jsx";
 import Home from "./components/Home.jsx";
+import Question from "./components/Question.jsx";
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
+                        <Route path="/questions/:id" element={<Question />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
