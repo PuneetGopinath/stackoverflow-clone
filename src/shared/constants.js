@@ -8,5 +8,6 @@
 export const VERSION = "0.1.0-dev";
 
 export const API_BASE_URL = "/api/";
-export const QUESTION_API_URL = `${API_BASE_URL}questions/`;
+export const POST_API_URL = `${API_BASE_URL}posts/`;
+export const USER_API_URL = `${API_BASE_URL}user/`;
 
