@@ -37,6 +37,9 @@ app.get("/livez", (req, res) => {
     res.status(200).json({ "status": "OK", "timestamp": new Date().toISOString() });
 });
 
+app.use(POST_API_URL, question);
+app.use(USER_API_URL, user);
+
 if (prod) {
     app.use(express.static(path.join(__dirname, "../client-dist")));
 
@@ -48,9 +51,6 @@ if (prod) {
         res.send(`Stack Overflow Clone ${VERSION} is running in ${prod ? "Production" : "Development"} mode`);
     });
 }
-
-app.use(POST_API_URL, question);
-app.use(USER_API_URL, user);
 
 app.use((err, req, res, next) => {
     console.error("[ ERROR ]", err);
