@@ -10,6 +10,27 @@ import { useParams } from "react-router";
 
 import { POST_API_URL, USER_API_URL } from "../../shared/constants.js";
 
+const getTimeAgo = (d) => {
+    const date = new Date(d);
+    const now = new Date();
+
+    const diff = now.getTime() - date.getTime();
+    const msInMinute = 1000 * 60;
+    const msInHour = msInMinute * 60;
+    const msInDay = msInHour * 24;
+
+    const days = Math.floor(diff / msInDay);
+    const hours = Math.floor((diff % msInDay) / msInHour);
+    const mins = Math.floor((diff % msInHour) / msInMinute);
+
+    if (days > 0) {
+        return `${days} days ago`;
+    } else if (hours > 0) {
+        return `${hours} hours ago`;
+    }
+    return `${mins} minutes ago`;
+};
+
 export default function Question() {
     const { id } = useParams();
 
@@ -116,7 +137,7 @@ export default function Question() {
                                 {question.comments.map((comment) => (
                                     <li key={comment._id} className="comment">
                                         <p>{comment.content}</p>
-                                        <p>By: {comment.author.name} ({comment.author.username})</p>
+                                        <p>{getTimeAgo(comment.createdAt)} | By: {comment.author.name} ({comment.author.username})</p>
                                     </li>
                                 ))}
                             </ul>
