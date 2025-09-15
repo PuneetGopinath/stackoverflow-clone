@@ -19,6 +19,10 @@ const getTimeAgo = (d) => {
     const msInHour = msInMinute * 60;
     const msInDay = msInHour * 24;
 
+    if (diff > msInDay * 30) {
+        return `${date.getDate()} ${date.toLocaleDateString("en-US", { month: "Short" })} ${date.getFullYear()} at ${date.getHours}:${date.getMinutes}`;
+    }
+
     const days = Math.floor(diff / msInDay);
     const hours = Math.floor((diff % msInDay) / msInHour);
     const mins = Math.floor((diff % msInHour) / msInMinute);
@@ -131,7 +135,6 @@ export default function Question() {
                     <button className="add-comment" onClick={comment}>Add a comment</button>
 
                     <div>
-                        <h2>Comments</h2>
                         {question.comments.length > 0 ? (
                             <ul className="comments">
                                 {question.comments.map((comment) => (
