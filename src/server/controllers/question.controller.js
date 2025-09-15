@@ -5,6 +5,7 @@
  * License: MIT (see LICENSE)
 */
 
+import User from "../models/User.js";
 import Post from "../models/Post.js";
 import Comment from "../models/Comment.js";
 
@@ -22,22 +23,32 @@ export const question = async (req, res) => {
 
 export const comment = async (req, res) => {
     const { postId } = req.params;
-    const { content, authorId } = req.body;
+    const { content, username } = req.body;
 
-    if (!content || !authorId) {
-        return res.status(400).json({ message: "Content and author ID are required" });
+    if (!content || !username) {
+        return res.status(400).json({ message: "Content and username are required" });
     }
 
-    const post = await Post.findOne({ urlID: postId }).select("_id");
+    const user = await User.findOne({ username }).select("_id");
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    const post = await Post.findOne({ urlID: postId });
     if (!post) {
         return res.status(404).json({ message: "Post not found" });
     }
 
     const comment = await Comment.create({
         content,
-        authorId,
+        author: user._id,
         parentId: post._id
     });
 
-    res.status(201).json(comment);
+    await comment.populate("author", "username name");
+
+    post.comments.push(comment._id);
+    await post.save();
+
+    res.status(201).json({ ...comment._doc });
 };
