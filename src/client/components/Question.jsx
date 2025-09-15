@@ -40,10 +40,10 @@ export default function Question() {
         let username = localStorage.getItem("username");
         if (!username) {
             username = prompt("Enter your username:");
-            if (!username) return;
+            if (!username) return alert("Username is required to comment");
             localStorage.setItem("username", username);
             const name = prompt("Enter your name:");
-            if (!name) return;
+            if (!name) return alert("Name is required to comment");
             try {
                 const res = await fetch(`${USER_API_URL}signup`, {
                     method: "POST",
@@ -56,6 +56,11 @@ export default function Question() {
                 const data = await res.json();
 
                 if (!res.ok) {
+                    if (res.status === 409) {
+                        alert("Username already exists. Please use a different username.");
+                        localStorage.removeItem("username");
+                        return comment();
+                    }
                     return console.error(data);
                 }
             } catch(err) {
