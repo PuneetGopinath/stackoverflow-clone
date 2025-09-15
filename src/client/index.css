@@ -14,6 +14,17 @@
     --time-ago-color: #616a73;
 }
 
+main {
+    padding: 0 1em;
+}
+
+.question {
+    padding: 1em;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+}
+
 .add-comment {
     border: none;
     border-radius: 8px;
@@ -29,10 +40,11 @@
 
 .comments {
     list-style-type: none;
+    padding: 0;
 }
 
-li.comment {
-    padding: 0.5em 1em;
+.comment {
+    padding: 0.25em 1em;
     background-color: aliceblue;
     border-radius: 8px;
     margin: 0.5em 0;
