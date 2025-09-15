@@ -28,7 +28,7 @@ const getTimeAgo = (d) => {
     } else if (hours > 0) {
         return `${hours} hours ago`;
     }
-    return `${mins} minutes ago`;
+    return `${mins} mins ago`;
 };
 
 export default function Question() {
@@ -128,16 +128,16 @@ export default function Question() {
                         <p>Asked by: {question.author.name} ({question.author.username})</p>
                     </div>
 
-                    <button onClick={comment}>Add a comment</button>
+                    <button className="add-comment" onClick={comment}>Add a comment</button>
 
-                    <div className="comments">
+                    <div>
                         <h2>Comments</h2>
                         {question.comments.length > 0 ? (
-                            <ul>
+                            <ul className="comments">
                                 {question.comments.map((comment) => (
                                     <li key={comment._id} className="comment">
                                         <p>{comment.content}</p>
-                                        <p>{getTimeAgo(comment.createdAt)} | By: {comment.author.name} ({comment.author.username})</p>
+                                        <p><span className="time-ago">{getTimeAgo(comment.createdAt)}</span> | {comment.author.name} ({comment.author.username})</p>
                                     </li>
                                 ))}
                             </ul>

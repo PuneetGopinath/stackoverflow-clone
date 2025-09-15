@@ -11,4 +11,34 @@
 
 :root {
     --bg: #f8f9f9;
+    --time-ago-color: #616a73;
+}
+
+.add-comment {
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.add-comment:hover {
+    background-color: #0056b3;
+}
+
+.comments {
+    list-style-type: none;
+}
+
+li.comment {
+    padding: 0.5em 1em;
+    background-color: aliceblue;
+    border-radius: 8px;
+    margin: 0.5em 0;
+}
+
+.time-ago {
+    color: var(--time-ago-color);
+    font-size: 0.9em;
 }
